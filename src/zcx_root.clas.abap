@@ -96,6 +96,20 @@ endif.
   endmethod.
 
 
-  method RAISE_MESSAGE.
-  endmethod.
+  METHOD raise_message.
+
+    CHECK t100key IS NOT INITIAL.
+
+    cl_message_helper=>set_msg_vars_for_if_t100_msg( me ).
+
+    MESSAGE ID t100key-msgid
+          TYPE sc_msgty-success
+        NUMBER t100key-msgno
+          WITH sy-msgv1
+               sy-msgv2
+               sy-msgv3
+               sy-msgv4
+  DISPLAY LIKE msgty.
+
+  ENDMETHOD.
 ENDCLASS.
